@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/abs-light.svg</file>
+        <file>Icons/engine.svg</file>
+        <file>Fonts/Alien-Encounters-Italic.ttf</file>
+        <file>Fonts/Alien-Encounters-Regular.ttf</file>
+    </qresource>
+</RCC>
