@@ -23,7 +23,8 @@ qt_add_qml_module(appRideOS
         Icons.qrc
         QML_FILES
         QML_FILES IconIndicator.qml
-        QML_FILES CurveProgressBar.qml
+        QML_FILES
+        QML_FILES
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -1,4 +1,6 @@
 import QtQuick 6.5
+import QtQuick.Effects
+import QtQuick.Shapes
 
 Window {
     id: root
@@ -37,7 +39,6 @@ Window {
     }
 
     // UI Values
-    // Smooth tachoColor based on tachoValue
     property color tachoColor: {
         var minTacho = 1000;
         var maxTacho = 6000;
@@ -59,8 +60,6 @@ Window {
         }
         return Qt.rgba(1, 0, 0, 1); // Default to Red if above max range
     }
-
-    // Smooth speedColor based on speedValue
     property color speedColor: {
         var minSpeed = 50;
         var maxSpeed = 120;
@@ -81,6 +80,10 @@ Window {
         }
         return Qt.rgba(0.8, 0, 0, 1); // Default to Dark red if above max range
     }
+    property bool gearBlinking: tachoValue > 4000
+    onGearBlinkingChanged: {
+        gearText.opacity = 1
+    }
 
 
     // Constants
@@ -100,19 +103,19 @@ Window {
 
         PropertyAnimation {
             target: root
-            property: "absWarning"
-            from: true
-            to: false
-            duration: 1000
-        }
-        PropertyAnimation {
-            target: root
             property: "engineWarning"
             from: true
             to: false
             duration: 1000
         }
 
+        PropertyAnimation {
+            target: root
+            property: "absWarning"
+            from: true
+            to: false
+            duration: 1000
+        }
         // Gear 1: 0-20 km/h, RPM increasing
         ParallelAnimation {
             NumberAnimation {
@@ -120,21 +123,21 @@ Window {
                 property: "gearValue"
                 from: 1
                 to: 1
-                duration: 4000
+                duration: 2000
             }
             NumberAnimation {
                 target: root
                 property: "speedValue"
                 from: 0
                 to: 20
-                duration: 4000
+                duration: 2000
             }
             NumberAnimation {
                 target: root
                 property: "tachoValue"
                 from: 1000
                 to: 4500 // RPM increases with speed in Gear 1
-                duration: 4000
+                duration: 2000
             }
 
         }
@@ -146,7 +149,7 @@ Window {
                 property: "gearValue"
                 from: 1
                 to: 2
-                duration: 1000 // Shorter duration for gear shift
+                duration: 200 // Shorter duration for gear shift
                 onStopped: { tachoValue = 1500; } // Reset RPM to low value
             }
             NumberAnimation {
@@ -154,14 +157,14 @@ Window {
                 property: "speedValue"
                 from: 20
                 to: 40
-                duration: 4000
+                duration: 2500
             }
             NumberAnimation {
                 target: root
                 property: "tachoValue"
                 from: 1500
                 to: 4500 // RPM increases with speed in Gear 2
-                duration: 4000
+                duration: 2500
             }
         }
 
@@ -172,7 +175,7 @@ Window {
                 property: "gearValue"
                 from: 2
                 to: 3
-                duration: 1000 // Shorter duration for gear shift
+                duration: 200 // Shorter duration for gear shift
                 onStopped: { tachoValue = 2000; } // Reset RPM to low value
             }
             NumberAnimation {
@@ -198,7 +201,7 @@ Window {
                 property: "gearValue"
                 from: 3
                 to: 4
-                duration: 1000 // Shorter duration for gear shift
+                duration: 200 // Shorter duration for gear shift
                 onStopped: { tachoValue = 2500; } // Reset RPM to low value
             }
             NumberAnimation {
@@ -224,7 +227,7 @@ Window {
                 property: "gearValue"
                 from: 4
                 to: 5
-                duration: 1000 // Shorter duration for gear shift
+                duration: 200 // Shorter duration for gear shift
                 onStopped: { tachoValue = 3000; } // Reset RPM to low value
             }
             NumberAnimation {
@@ -245,27 +248,58 @@ Window {
     }
 
     // UI
-    Rectangle {
-        id: tachoIndicator
-        anchors.centerIn: parent
-        height: 460
+    Shape {
+        id: glowOverlay
+        height: 420
         width: height
-        radius: height / 2
-        color: "transparent"
-        border.color: tachoColor
-        border.width: 20
+        anchors.centerIn: parent
+
+        ShapePath {
+            strokeColor: "transparent"
+            fillGradient: RadialGradient {
+                centerX: glowOverlay.width / 2
+                centerY: glowOverlay.height / 2
+                centerRadius: glowOverlay.width * 0.7
+                focalX: centerX; focalY: centerY;
+                // GradientStop { position: 0.0; color: "black"}
+                // GradientStop { position: 0.5; color: "black"}
+                // GradientStop { position: 0.6; color: "black"}
+                // GradientStop { position: 0.6; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.6) }
+                // GradientStop { position: 0.8; color: tachoColor }
+                // GradientStop { position: 0.9; color: "black"}
+                // GradientStop { position: 0.9; color: tachoColor }
+
+                GradientStop { position: 0.0; color: "black"}
+                GradientStop { position: 0.4; color: "black"}
+                GradientStop { position: 0.55; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.4)}
+                GradientStop { position: 0.6; color: "black"}
+                GradientStop { position: 0.55; color: "black" }
+                GradientStop { position: 0.75; color: tachoColor }
+                GradientStop { position: 0.9; color: "black"}
+                GradientStop { position: 0.9; color: tachoColor }
+            }
+
+            PathAngleArc {
+                centerX: glowOverlay.width / 2
+                centerY: glowOverlay.height / 2
+                radiusX: glowOverlay.width / 2
+                radiusY: glowOverlay.height / 2
+                startAngle: 0
+                sweepAngle: 360
+            }
+        }
     }
 
-    Rectangle {
-        id: speedIndicator
-        anchors.centerIn: parent
-        height: 400
-        width: height
-        radius: height / 2
-        color: "transparent"
-        border.color: speedColor
-        border.width: 20
+    Text {
+        text: "x1000 RPM"
+        color: "white"
+        x: root.width * 0.64
+        y: root.height * 0.8
+        font.pointSize: 20
+        font.family: textFont.name
+        font.italic: true
     }
+
 
     Text {
         id: speedText
@@ -280,7 +314,6 @@ Window {
     }
 
     Text {
-        id: gearText
         text: "km/h"
         color: "white"
         anchors.top: speedText.bottom
@@ -289,11 +322,38 @@ Window {
         font.family: textFont.name
     }
 
-    Row {
-        padding: 16
-        spacing: 36
+    Text {
+        id: gearText
+        text: gearValue == 0 ? "N" : gearValue
+        font.pointSize: 36
+        font.family: textFont.name
+        color: gearValue == 0 ? "green" : "white"
+        padding: 30
+        anchors.top: glowOverlay.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: tachoIndicator.bottom
+        layer.effect: MultiEffect {
+            shadowEnabled: true
+            shadowBlur: 10
+            shadowScale: 1
+            shadowColor: gearText.color
+            brightness: 1.0
+        }
+
+        // Animation for blinking effect
+        SequentialAnimation {
+            loops: Animation.Infinite // Make the animation loop infinitely
+            running: tachoValue > 4000
+            PropertyAnimation { target: gearText; property: "opacity"; to: 0.4; duration: 100 }
+            PropertyAnimation { target: gearText; property: "opacity"; to: 1.0; duration: 100 }
+        }
+    }
+
+    Column {
+        padding: 16
+        spacing: 40
+        anchors.verticalCenter: root.verticalCenter
+        anchors.right: glowOverlay.left
+        anchors.left: parent.left
 
         IconIndicator {
             iconPath: "qrc:/Icons/abs-light.svg"
@@ -302,13 +362,6 @@ Window {
             height: 40
             width: 40
             isOn: absWarning
-        }
-
-        Text {
-            text: gearValue == 0 ? "N" : gearValue
-            font.pointSize: 36
-            font.family: textFont.name
-            color: gearValue == 0 ? "green" : "white"
         }
 
         IconIndicator {
