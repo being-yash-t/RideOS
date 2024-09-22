@@ -32,11 +32,6 @@ Item {
             colorization: 1.0
             colorizationColor: currentColor
         }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: root.isOn = !root.isOn
-        }
     }
 
     Behavior on glowBlur {

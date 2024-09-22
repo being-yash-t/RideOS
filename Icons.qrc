@@ -4,5 +4,7 @@
         <file>Icons/engine.svg</file>
         <file>Fonts/Alien-Encounters-Italic.ttf</file>
         <file>Fonts/Alien-Encounters-Regular.ttf</file>
+        <file>Icons/engine-temp.svg</file>
+        <file>Icons/maps.svg</file>
     </qresource>
 </RCC>

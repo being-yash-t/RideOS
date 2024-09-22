@@ -27,6 +27,10 @@ Window {
     property int gearValue: 0
     property bool engineWarning: true
     property bool absWarning: true
+    property int engineTemp: 0
+    property int trip1: 20
+    property int trip2: 20
+    property int odo: 16000
 
     // Functions
     function lerpColor(color1, color2, factor) {
@@ -82,13 +86,18 @@ Window {
     }
     property bool gearBlinking: tachoValue > 4000
     onGearBlinkingChanged: {
-        gearText.opacity = 1
+        if (!gearBlinking) {
+            gearText.opacity = 1
+            tachoMark.opacity = 1
+            glowOverlay.opacity = 1
+        }
     }
 
 
     // Constants
     property color warningColor: "#FFD700"
     property color offColor: "#3D3D3D"
+    property int maxTacho: 6000
 
     // Behaviors
     // Behavior on tachoColor { ColorAnimation { duration: 200 } }
@@ -256,6 +265,7 @@ Window {
 
         ShapePath {
             strokeColor: "transparent"
+
             fillGradient: RadialGradient {
                 centerX: glowOverlay.width / 2
                 centerY: glowOverlay.height / 2
@@ -288,17 +298,53 @@ Window {
                 sweepAngle: 360
             }
         }
+        SequentialAnimation {
+            loops: Animation.Infinite // Make the animation loop infinitely
+            running: gearBlinking
+            PropertyAnimation { target: glowOverlay; property: "opacity"; to: 0.4; duration: 100 }
+            PropertyAnimation { target: glowOverlay; property: "opacity"; to: 1.0; duration: 100 }
+        }
     }
 
-    Text {
-        text: "x1000 RPM"
-        color: "white"
-        x: root.width * 0.64
-        y: root.height * 0.8
-        font.pointSize: 20
-        font.family: textFont.name
-        font.italic: true
+    Row {
+        anchors.centerIn: parent
+        height: 420
+        width: 420
+        // -45 startAngle, 225 endAngle
+        rotation: -45 + ((tachoValue / (maxTacho + 2000)) * (225 + 45))
+        transformOrigin: Item.Center
+
+        Rectangle {
+            id: tachoMark
+            color: "white"
+            width: 48
+            height: 8
+            anchors.verticalCenter: parent.verticalCenter
+            // radius: height / 2
+            SequentialAnimation {
+                loops: Animation.Infinite // Make the animation loop infinitely
+                running: gearBlinking
+                PropertyAnimation { target: tachoMark; property: "opacity"; to: 0.4; duration: 100 }
+                PropertyAnimation { target: tachoMark; property: "opacity"; to: 1.0; duration: 100 }
+            }
+        }
+        Rectangle {
+            // color: "transparent"
+            width: parent.width - tachoMark.width
+            height: 0
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
+
+    // Text {
+    //     text: "x1000 RPM"
+    //     color: "white"
+    //     x: root.width * 0.64
+    //     y: root.height * 0.8
+    //     font.pointSize: 20
+    //     font.family: textFont.name
+    //     font.italic: true
+    // }
 
 
     Text {
@@ -342,7 +388,7 @@ Window {
         // Animation for blinking effect
         SequentialAnimation {
             loops: Animation.Infinite // Make the animation loop infinitely
-            running: tachoValue > 4000
+            running: gearBlinking
             PropertyAnimation { target: gearText; property: "opacity"; to: 0.4; duration: 100 }
             PropertyAnimation { target: gearText; property: "opacity"; to: 1.0; duration: 100 }
         }
@@ -351,10 +397,17 @@ Window {
     Column {
         padding: 16
         spacing: 40
-        anchors.verticalCenter: root.verticalCenter
         anchors.right: glowOverlay.left
         anchors.left: parent.left
-
+        anchors.verticalCenter: parent.verticalCenter
+        Text {
+            text: odo + " km"
+            font.pointSize: 24
+            font.family: textFont.name
+            color: "white"
+            anchors.horizontalCenter: parent.horizontalCenter
+            topPadding: 8
+        }
         IconIndicator {
             iconPath: "qrc:/Icons/abs-light.svg"
             onColor: warningColor
@@ -362,6 +415,7 @@ Window {
             height: 40
             width: 40
             isOn: absWarning
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
         IconIndicator {
@@ -371,6 +425,135 @@ Window {
             height: 40
             width: 40
             isOn: engineWarning
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        // Row {
+        //     anchors.horizontalCenter: parent.horizontalCenter
+        //     height: 40
+        //     spacing: 16
+
+        //     Text {
+        //         text: "99 ℃"
+        //         font.pointSize: 20
+        //         font.family: textFont.name
+        //         color: "white"
+        //         anchors.verticalCenter: parent.verticalCenter
+        //     }
+
+        IconIndicator {
+            iconPath: "qrc:/Icons/engine-temp.svg"
+            onColor: {
+                if (engineTemp <= 15) {
+                    return "lightblue";  // Low temperature (cold conditions)
+                } else if (engineTemp > 15 && engineTemp <= 30) {
+                    return "green";      // Average temperature (optimal conditions)
+                } else if (engineTemp > 30 && engineTemp <= 40) {
+                    return "orange";     // High temperature (hot conditions)
+                } else {
+                    return "red";        // Very high temperature (overheating)
+                }
+            }
+            height: 40
+            width: 40
+            // isOn: true
+            isOn: true
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+    }
+
+
+    Column {
+        padding: 16
+        spacing: 40
+        anchors.left: glowOverlay.right
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 40
+            spacing: 16
+
+            Text {
+                text: "Trip 1:"
+                font.pointSize: 18
+                font.family: textFont.name
+                color: "white"
+                anchors.verticalCenter: parent.verticalCenter
+                topPadding: 8
+            }
+
+            Text {
+                text: trip1 + " km"
+                font.pointSize: 24
+                font.family: textFont.name
+                color: "white"
+                anchors.verticalCenter: parent.verticalCenter
+                topPadding: 8
+            }
+        }
+
+
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 40
+            spacing: 16
+
+            Text {
+                text: "Mode:"
+                font.pointSize: 18
+                font.family: textFont.name
+                color: "white"
+                anchors.verticalCenter: parent.verticalCenter
+                topPadding: 8
+            }
+
+            Text {
+                text: "Race"
+                font.pointSize: 24
+                font.family: textFont.name
+                color: "red"
+                anchors.verticalCenter: parent.verticalCenter
+                topPadding: 8
+            }
+        }
+
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 30
+            spacing: 16
+
+            Image {
+                id: mapIcon
+                source: "qrc:/Icons/maps.svg"
+                width: parent.height
+                height: parent.height
+                fillMode: Image.PreserveAspectFit
+                sourceSize.width: width         // Adjust source size to match the item size
+                sourceSize.height: height       // Adjust source size to match the item size
+                layer.enabled: true
+                property color iconColor: "lightblue"
+                layer.effect: MultiEffect {
+                    shadowEnabled: true
+                    shadowScale: 1
+                    shadowColor: mapIcon.iconColor
+                    brightness: 1.0
+                    colorization: 1.0
+                    colorizationColor: mapIcon.iconColor
+                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            Text {
+                text: "Maps"
+                font.pointSize: 30
+                font.family: textFont.name
+                color: mapIcon.iconColor
+                anchors.verticalCenter: parent.verticalCenter
+                topPadding: 8
+            }
+
         }
     }
 }
