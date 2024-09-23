@@ -8,7 +8,7 @@ Window {
     width: 1024
     height: 600
     title: "RideOS"
-    color: "#141414"
+    color: backgroundColor
 
     FontLoader {
         id: numbersFont
@@ -17,6 +17,11 @@ Window {
 
     FontLoader {
         id: textFont
+        source: "qrc:/Fonts/Alien-Encounters-Solid-Regular.ttf"  // Replace with your actual font file path
+    }
+
+    FontLoader {
+        id: highLightTextFont
         source: "qrc:/Fonts/Alien-Encounters-Regular.ttf"  // Replace with your actual font file path
     }
 
@@ -43,9 +48,9 @@ Window {
     }
 
     // UI Values
+    property color backgroundColor: "#141414"
     property color tachoColor: {
         var minTacho = 1000;
-        var maxTacho = 6000;
         var tachoRanges = [
                     { min: 1000, max: 2000, startColor: Qt.rgba(0, 1, 0, 1), endColor: Qt.rgba(0.2, 1, 0.2, 1) },  // Green to Lime green
                     { min: 2000, max: 2500, startColor: Qt.rgba(0.2, 1, 0.2, 1), endColor: Qt.rgba(0.7, 1, 0, 1) },  // Lime green to Yellow-green
@@ -93,11 +98,10 @@ Window {
         }
     }
 
-
     // Constants
     property color warningColor: "#FFD700"
     property color offColor: "#3D3D3D"
-    property int maxTacho: 6000
+    property int maxTacho: 10000
 
     // Behaviors
     // Behavior on tachoColor { ColorAnimation { duration: 200 } }
@@ -257,46 +261,70 @@ Window {
     }
 
     // UI
-    Shape {
+    // Shape {
+    //     height: 420
+    //     width: height
+    //     anchors.centerIn: parent
+
+    //     ShapePath {
+    //         strokeColor: "transparent"
+
+    //         fillGradient: RadialGradient {
+    //             centerX: glowOverlay.width / 2
+    //             centerY: glowOverlay.height / 2
+    //             centerRadius: glowOverlay.width * 0.7
+    //             focalX: centerX; focalY: centerY;
+    //             GradientStop { position: 0.0; color: backgroundColor}
+    //             GradientStop { position: 0.5; color: backgroundColor}
+    //             GradientStop { position: 0.55; color: backgroundColor}
+    //             GradientStop { position: 0.55; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.6) }
+    //             GradientStop { position: 0.8; color: tachoColor }
+    //             GradientStop { position: 0.9; color: backgroundColor}
+    //             GradientStop { position: 0.9; color: tachoColor }
+
+    //             // GradientStop { position: 0.0; color: backgroundColor}
+    //             // GradientStop { position: 0.4; color: backgroundColor}
+    //             // GradientStop { position: 0.55; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.4)}
+    //             // GradientStop { position: 0.6; color: backgroundColor}
+    //             // GradientStop { position: 0.55; color: backgroundColor }
+    //             // GradientStop { position: 0.75; color: tachoColor }
+    //             // GradientStop { position: 0.9; color: backgroundColor}
+    //             // GradientStop { position: 0.9; color: tachoColor }
+    //         }
+
+    //         PathAngleArc {
+    //             centerX: glowOverlay.width / 2
+    //             centerY: glowOverlay.height / 2
+    //             radiusX: glowOverlay.width / 2
+    //             radiusY: glowOverlay.height / 2
+    //             startAngle: 0
+    //             sweepAngle: 360
+    //         }
+    //     }
+    //     SequentialAnimation {
+    //         loops: Animation.Infinite // Make the animation loop infinitely
+    //         running: gearBlinking
+    //         PropertyAnimation { target: glowOverlay; property: "opacity"; to: 0.4; duration: 100 }
+    //         PropertyAnimation { target: glowOverlay; property: "opacity"; to: 1.0; duration: 100 }
+    //     }
+    // }
+
+
+    Image {
         id: glowOverlay
+        source: "qrc:/Icons/glow-outer.svg"
         height: 420
         width: height
+        fillMode: Image.PreserveAspectFit
+        sourceSize.width: width         // Adjust source size to match the item size
+        sourceSize.height: height       // Adjust source size to match the item size
+
         anchors.centerIn: parent
-
-        ShapePath {
-            strokeColor: "transparent"
-
-            fillGradient: RadialGradient {
-                centerX: glowOverlay.width / 2
-                centerY: glowOverlay.height / 2
-                centerRadius: glowOverlay.width * 0.7
-                focalX: centerX; focalY: centerY;
-                // GradientStop { position: 0.0; color: "black"}
-                // GradientStop { position: 0.5; color: "black"}
-                // GradientStop { position: 0.6; color: "black"}
-                // GradientStop { position: 0.6; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.6) }
-                // GradientStop { position: 0.8; color: tachoColor }
-                // GradientStop { position: 0.9; color: "black"}
-                // GradientStop { position: 0.9; color: tachoColor }
-
-                GradientStop { position: 0.0; color: "black"}
-                GradientStop { position: 0.4; color: "black"}
-                GradientStop { position: 0.55; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.4)}
-                GradientStop { position: 0.6; color: "black"}
-                GradientStop { position: 0.55; color: "black" }
-                GradientStop { position: 0.75; color: tachoColor }
-                GradientStop { position: 0.9; color: "black"}
-                GradientStop { position: 0.9; color: tachoColor }
-            }
-
-            PathAngleArc {
-                centerX: glowOverlay.width / 2
-                centerY: glowOverlay.height / 2
-                radiusX: glowOverlay.width / 2
-                radiusY: glowOverlay.height / 2
-                startAngle: 0
-                sweepAngle: 360
-            }
+        layer.enabled: true
+        layer.effect: MultiEffect {
+            brightness: 1.0
+            colorization: 1.0
+            colorizationColor: tachoColor
         }
         SequentialAnimation {
             loops: Animation.Infinite // Make the animation loop infinitely
@@ -306,27 +334,68 @@ Window {
         }
     }
 
+    Image {
+        source: "qrc:/Icons/glow-inner.svg"
+        height: 420
+        width: height
+        fillMode: Image.PreserveAspectFit
+        sourceSize.width: width         // Adjust source size to match the item size
+        sourceSize.height: height       // Adjust source size to match the item size
+
+        anchors.centerIn: parent
+        layer.enabled: true
+        layer.effect: MultiEffect {
+            brightness: 1.0
+            colorization: 1.0
+            colorizationColor: speedColor
+        }
+    }
+
+    Image {
+        source: "qrc:/Icons/meter-path.svg"
+        height: 504
+        width: height
+        fillMode: Image.PreserveAspectFit
+        sourceSize.width: width         // Adjust source size to match the item size
+        sourceSize.height: height       // Adjust source size to match the item size
+
+        anchors.centerIn: parent
+    }
+
     Row {
         anchors.centerIn: parent
         height: 420
         width: 420
-        // -45 startAngle, 225 endAngle
-        rotation: -45 + ((tachoValue / (maxTacho + 2000)) * (225 + 45))
+        // -60 startAngle, 240 endAngle
+        rotation: -60 + ((tachoValue / (maxTacho)) * (240 + 60))
         transformOrigin: Item.Center
 
-        Rectangle {
+        Image {
             id: tachoMark
-            color: "white"
-            width: 48
+            source: "qrc:/Icons/meter-mark.svg"
+            width: 42
             height: 8
             anchors.verticalCenter: parent.verticalCenter
-            // radius: height / 2
-            SequentialAnimation {
-                loops: Animation.Infinite // Make the animation loop infinitely
-                running: gearBlinking
-                PropertyAnimation { target: tachoMark; property: "opacity"; to: 0.4; duration: 100 }
-                PropertyAnimation { target: tachoMark; property: "opacity"; to: 1.0; duration: 100 }
+            rotation: 180
+            fillMode: Image.PreserveAspectFit
+            sourceSize.width: width         // Adjust source size to match the item size
+            sourceSize.height: height       // Adjust source size to match the item size
+            z: 5
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                shadowEnabled: true
+                shadowScale: 1
+                shadowColor: "orangered"
+                brightness: 1.0
+                colorization: 1.0
+                colorizationColor: "orangered"
             }
+            // SequentialAnimation {
+            //     loops: Animation.Infinite // Make the animation loop infinitely
+            //     running: gearBlinking
+            //     PropertyAnimation { target: tachoMark; property: "opacity"; to: 0.4; duration: 100 }
+            //     PropertyAnimation { target: tachoMark; property: "opacity"; to: 1.0; duration: 100 }
+            // }
         }
         Rectangle {
             // color: "transparent"
@@ -335,17 +404,6 @@ Window {
             anchors.verticalCenter: parent.verticalCenter
         }
     }
-
-    // Text {
-    //     text: "x1000 RPM"
-    //     color: "white"
-    //     x: root.width * 0.64
-    //     y: root.height * 0.8
-    //     font.pointSize: 20
-    //     font.family: textFont.name
-    //     font.italic: true
-    // }
-
 
     Text {
         id: speedText
@@ -512,7 +570,7 @@ Window {
             Text {
                 text: "Race"
                 font.pointSize: 24
-                font.family: textFont.name
+                font.family: highLightTextFont.name
                 color: "red"
                 anchors.verticalCenter: parent.verticalCenter
                 topPadding: 8

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500mm"
+   height="500mm"
+   viewBox="0 0 500 500"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   sodipodi:docname="meter-path.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.5"
+     inkscape:cx="826"
+     inkscape:cy="885"
+     inkscape:window-width="1973"
+     inkscape:window-height="1205"
+     inkscape:window-x="482"
+     inkscape:window-y="55"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showguides="true">
+    <sodipodi:guide
+       position="-145.92916,571.84204"
+       orientation="0,-1"
+       id="guide1223"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="curvestitching"
+       id="path-effect1221"
+       is_visible="true"
+       lpeversion="1"
+       count="13"
+       startpoint_edge_variation="0;1"
+       startpoint_spacing_variation="0;1"
+       endpoint_edge_variation="0;1"
+       endpoint_spacing_variation="0;1"
+       strokepath="M0,0 L1,0"
+       prop_scale="1"
+       scale_y_rel="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.02055876)">
+    <path
+       style="display:inline;fill:none;stroke:#ffffff;stroke-width:3.96355"
+       id="path539"
+       sodipodi:type="arc"
+       sodipodi:cx="249.97945"
+       sodipodi:cy="249.98248"
+       sodipodi:rx="208.00098"
+       sodipodi:ry="208.00072"
+       sodipodi:start="2.0943951"
+       sodipodi:end="1.0471976"
+       sodipodi:arc-type="arc"
+       d="M 145.97896,430.11639 A 208.00098,208.00072 0 0 1 49.065932,196.14793 208.00098,208.00072 0 0 1 249.97945,41.981766 208.00098,208.00072 0 0 1 450.89296,196.14794 208.00098,208.00072 0 0 1 353.97993,430.11639"
+       sodipodi:open="true" />
+    <path
+       style="color:#000000;fill:#ffffff;-inkscape-stroke:none"
+       d="M 247.13477,3.0351563 V 17.810547 h 5.6875 V 3.0351563 Z m -116.15821,33.9296877 -4.99414,2.724609 5.95508,10.919922 4.99414,-2.724609 z m 238.00586,0 -5.95508,10.919922 4.99219,2.724609 5.95703,-10.919922 z m -329.437498,88.974606 -2.476563,5.1211 11.888672,5.75 2.476563,-5.1211 z m 420.869138,0 -11.88867,5.75 2.47656,5.1211 11.88867,-5.75 z M 3.0136719,247.15625 v 5.6875 H 19.287109 v -5.6875 z m 477.6581981,0 v 5.6875 h 16.27344 v -5.6875 z m -431.714839,116.0332 -11.888672,5.75 2.476563,5.1211 11.888672,-5.75 z m 402.044919,0 -2.47656,5.1211 11.88867,5.75 2.47656,-5.1211 z m -319.06445,86.20117 -7.2692,13.36043 4.9151,2.91234 7.34824,-13.54816 z m 236.08203,0 -4.99219,2.72461 7.43307,13.50642 4.87746,-2.88019 z"
+       id="circle1158"
+       transform="matrix(0.85032151,0,0,0.85032151,37.416554,37.419621)"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="130.15443"
+       y="458.25833"
+       id="text1364"><tspan
+         sodipodi:role="line"
+         id="tspan1362"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="130.15443"
+         y="458.25833">0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="47.075272"
+       y="366.71249"
+       id="text1438"><tspan
+         sodipodi:role="line"
+         id="tspan1436"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="47.075272"
+         y="366.71249">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="16.383608"
+       y="258.76248"
+       id="text1442"><tspan
+         sodipodi:role="line"
+         id="tspan1440"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="16.383608"
+         y="258.76248">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="44.42944"
+       y="148.69583"
+       id="text1446"><tspan
+         sodipodi:role="line"
+         id="tspan1444"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="44.42944"
+         y="148.69583">3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="125.92111"
+       y="65.087502"
+       id="text1450"><tspan
+         sodipodi:role="line"
+         id="tspan1448"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="125.92111"
+         y="65.087502">4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="241.27943"
+       y="33.337498"
+       id="text1454"><tspan
+         sodipodi:role="line"
+         id="tspan1452"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="241.27943"
+         y="33.337498">5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="356.63776"
+       y="62.970833"
+       id="text1458"><tspan
+         sodipodi:role="line"
+         id="tspan1456"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="356.63776"
+         y="62.970833">6</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="437.07111"
+       y="149.75417"
+       id="text1462"><tspan
+         sodipodi:role="line"
+         id="tspan1460"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="437.07111"
+         y="149.75417">7</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="465.11691"
+       y="259.29166"
+       id="text1466"><tspan
+         sodipodi:role="line"
+         id="tspan1464"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="465.11691"
+         y="259.29166">8</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="437.60025"
+       y="367.77081"
+       id="text1470"><tspan
+         sodipodi:role="line"
+         id="tspan1468"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="437.60025"
+         y="367.77081">9</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="352.93362"
+       y="456.67084"
+       id="text1474"><tspan
+         sodipodi:role="line"
+         id="tspan1472"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="352.93362"
+         y="456.67084">10</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1111px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       x="382.56696"
+       y="456.67084"
+       id="text756"><tspan
+         sodipodi:role="line"
+         id="tspan754"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1111px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         x="382.56696"
+         y="456.67084">X 1000 RPM</tspan></text>
+  </g>
+</svg>

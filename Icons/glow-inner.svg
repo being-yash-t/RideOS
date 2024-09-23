@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="495.67603mm"
+   height="495.67596mm"
+   viewBox="0 0 495.67603 495.67596"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   sodipodi:docname="glow-inner.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.49450749"
+     inkscape:cx="687.55278"
+     inkscape:cy="822.03002"
+     inkscape:window-width="2156"
+     inkscape:window-height="1205"
+     inkscape:window-x="366"
+     inkscape:window-y="78"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3145">
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="0.84302324"
+         id="stop3141" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.24479169;"
+         offset="1"
+         id="stop3143" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3145"
+       id="radialGradient3139"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.8069788,0,0,0.80697885,50.417349,50.417358)"
+       cx="250"
+       cy="249.99998"
+       fx="250"
+       fy="249.99998"
+       r="247.838" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-2.1620026,-2.1620026)">
+    <circle
+       style="fill:url(#radialGradient3139);fill-opacity:1;stroke:none;stroke-width:3.4894"
+       id="ellipse3137"
+       cy="252.162"
+       cx="252.162"
+       r="200" />
+  </g>
+</svg>

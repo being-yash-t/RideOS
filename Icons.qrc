@@ -6,5 +6,10 @@
         <file>Fonts/Alien-Encounters-Regular.ttf</file>
         <file>Icons/engine-temp.svg</file>
         <file>Icons/maps.svg</file>
+        <file>Icons/meter-mark.svg</file>
+        <file>Icons/meter-path.svg</file>
+        <file>Icons/glow-inner.svg</file>
+        <file>Icons/glow-outer.svg</file>
+        <file>Fonts/Alien-Encounters-Solid-Regular.ttf</file>
     </qresource>
 </RCC>
