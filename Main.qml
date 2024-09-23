@@ -261,55 +261,6 @@ Window {
     }
 
     // UI
-    // Shape {
-    //     height: 420
-    //     width: height
-    //     anchors.centerIn: parent
-
-    //     ShapePath {
-    //         strokeColor: "transparent"
-
-    //         fillGradient: RadialGradient {
-    //             centerX: glowOverlay.width / 2
-    //             centerY: glowOverlay.height / 2
-    //             centerRadius: glowOverlay.width * 0.7
-    //             focalX: centerX; focalY: centerY;
-    //             GradientStop { position: 0.0; color: backgroundColor}
-    //             GradientStop { position: 0.5; color: backgroundColor}
-    //             GradientStop { position: 0.55; color: backgroundColor}
-    //             GradientStop { position: 0.55; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.6) }
-    //             GradientStop { position: 0.8; color: tachoColor }
-    //             GradientStop { position: 0.9; color: backgroundColor}
-    //             GradientStop { position: 0.9; color: tachoColor }
-
-    //             // GradientStop { position: 0.0; color: backgroundColor}
-    //             // GradientStop { position: 0.4; color: backgroundColor}
-    //             // GradientStop { position: 0.55; color: Qt.rgba(speedColor.r, speedColor.g, speedColor.b, 0.4)}
-    //             // GradientStop { position: 0.6; color: backgroundColor}
-    //             // GradientStop { position: 0.55; color: backgroundColor }
-    //             // GradientStop { position: 0.75; color: tachoColor }
-    //             // GradientStop { position: 0.9; color: backgroundColor}
-    //             // GradientStop { position: 0.9; color: tachoColor }
-    //         }
-
-    //         PathAngleArc {
-    //             centerX: glowOverlay.width / 2
-    //             centerY: glowOverlay.height / 2
-    //             radiusX: glowOverlay.width / 2
-    //             radiusY: glowOverlay.height / 2
-    //             startAngle: 0
-    //             sweepAngle: 360
-    //         }
-    //     }
-    //     SequentialAnimation {
-    //         loops: Animation.Infinite // Make the animation loop infinitely
-    //         running: gearBlinking
-    //         PropertyAnimation { target: glowOverlay; property: "opacity"; to: 0.4; duration: 100 }
-    //         PropertyAnimation { target: glowOverlay; property: "opacity"; to: 1.0; duration: 100 }
-    //     }
-    // }
-
-
     Image {
         id: glowOverlay
         source: "qrc:/Icons/glow-outer.svg"
@@ -390,12 +341,6 @@ Window {
                 colorization: 1.0
                 colorizationColor: "orangered"
             }
-            // SequentialAnimation {
-            //     loops: Animation.Infinite // Make the animation loop infinitely
-            //     running: gearBlinking
-            //     PropertyAnimation { target: tachoMark; property: "opacity"; to: 0.4; duration: 100 }
-            //     PropertyAnimation { target: tachoMark; property: "opacity"; to: 1.0; duration: 100 }
-            // }
         }
         Rectangle {
             // color: "transparent"
@@ -443,7 +388,6 @@ Window {
             brightness: 1.0
         }
 
-        // Animation for blinking effect
         SequentialAnimation {
             loops: Animation.Infinite // Make the animation loop infinitely
             running: gearBlinking
@@ -458,6 +402,7 @@ Window {
         anchors.right: glowOverlay.left
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
+
         Text {
             text: odo + " km"
             font.pointSize: 24
@@ -520,7 +465,6 @@ Window {
         }
     }
 
-
     Column {
         padding: 16
         spacing: 40
@@ -551,7 +495,6 @@ Window {
                 topPadding: 8
             }
         }
-
 
         Row {
             anchors.horizontalCenter: parent.horizontalCenter
