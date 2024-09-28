@@ -25,12 +25,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.5"
-     inkscape:cx="826"
-     inkscape:cy="885"
+     inkscape:cx="695"
+     inkscape:cy="887"
      inkscape:window-width="1973"
      inkscape:window-height="1205"
      inkscape:window-x="482"
-     inkscape:window-y="55"
+     inkscape:window-y="27"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      showguides="true">
@@ -203,13 +203,13 @@
          y="456.67084">10</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1111px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.93333333px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
        x="382.56696"
        y="456.67084"
        id="text756"><tspan
          sodipodi:role="line"
          id="tspan754"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1111px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:4;font-size:16.93333333px"
          x="382.56696"
          y="456.67084">X 1000 RPM</tspan></text>
   </g>
