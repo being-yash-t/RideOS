@@ -11,5 +11,11 @@
         <file>Icons/glow-inner.svg</file>
         <file>Icons/glow-outer.svg</file>
         <file>Fonts/Alien-Encounters-Solid-Regular.ttf</file>
+        <file>Icons/divider-top-left.svg</file>
+        <file>Icons/divider-bottom-left.svg</file>
+        <file>Icons/divider-bottom-right.svg</file>
+        <file>Icons/divider-top-right.svg</file>
+        <file>Icons/fuel-meter.svg</file>
+        <file>Icons/chevron-left.svg</file>
     </qresource>
 </RCC>

@@ -2,13 +2,11 @@ import QtQuick 6.5
 import QtQuick.Effects
 import QtQuick.Shapes
 
-Window {
+Item {
     id: root
     visible: true
     width: 1024
     height: 600
-    title: "RideOS"
-    color: backgroundColor
 
     FontLoader {
         id: numbersFont
@@ -25,14 +23,13 @@ Window {
         source: "qrc:/Fonts/Alien-Encounters-Regular.ttf"  // Replace with your actual font file path
     }
 
-
     // Values
     property int speedValue: 0
     property int tachoValue: 0
     property int gearValue: 0
     property bool engineWarning: true
     property bool absWarning: true
-    property int engineTemp: 0
+    property int engineTemp: 35
     property int trip1: 20
     property int trip2: 20
     property int odo: 16000
@@ -48,7 +45,6 @@ Window {
     }
 
     // UI Values
-    property color backgroundColor: "#141414"
     property color tachoColor: {
         var minTacho = 1000;
         var tachoRanges = [
@@ -269,8 +265,9 @@ Window {
         fillMode: Image.PreserveAspectFit
         sourceSize.width: width         // Adjust source size to match the item size
         sourceSize.height: height       // Adjust source size to match the item size
-
-        anchors.centerIn: parent
+        anchors.left: meterPath.left
+        anchors.right: meterPath.right
+        anchors.verticalCenter: parent.verticalCenter
         layer.enabled: true
         layer.effect: MultiEffect {
             brightness: 1.0
@@ -292,8 +289,9 @@ Window {
         fillMode: Image.PreserveAspectFit
         sourceSize.width: width         // Adjust source size to match the item size
         sourceSize.height: height       // Adjust source size to match the item size
-
-        anchors.centerIn: parent
+        anchors.left: meterPath.left
+        anchors.right: meterPath.right
+        anchors.verticalCenter: parent.verticalCenter
         layer.enabled: true
         layer.effect: MultiEffect {
             brightness: 1.0
@@ -303,18 +301,30 @@ Window {
     }
 
     Image {
+        id: meterPath
         source: "qrc:/Icons/meter-path.svg"
         height: 504
         width: height
         fillMode: Image.PreserveAspectFit
         sourceSize.width: width         // Adjust source size to match the item size
         sourceSize.height: height       // Adjust source size to match the item size
+        x: 16
+        anchors.verticalCenter: parent.verticalCenter
+    }
 
-        anchors.centerIn: parent
+    Image {
+        id: fuelMeter
+        source: "qrc:/Icons/fuel-meter.svg"
+        height: meterPath.height - 120
+        sourceSize.height: height       // Adjust source size to match the item size
+        fillMode: Image.PreserveAspectFit
+        x: (meterPath.x + meterPath.width) - 60
+        anchors.verticalCenter: parent.verticalCenter
     }
 
     Row {
-        anchors.centerIn: parent
+        anchors.verticalCenter: glowOverlay.verticalCenter
+        anchors.horizontalCenter: glowOverlay.horizontalCenter
         height: 420
         width: 420
         // -60 startAngle, 240 endAngle
@@ -350,9 +360,46 @@ Window {
         }
     }
 
+    Image {
+        id: topLeft
+        source: "qrc:/Icons/divider-top-left.svg"
+        height: 80
+        width: 180
+        opacity: 0.4
+        sourceSize.width: width         // Adjust source size to match the item size
+        sourceSize.height: height       // Adjust source size to match the item size
+    }
+
+    Image {
+        id: bottomLeft
+        source: "qrc:/Icons/divider-bottom-left.svg"
+        height: 80
+        width: 180
+        opacity: 0.4
+        anchors.bottom: parent.bottom
+    }
+
+    Image {
+        id: topRight
+        source: "qrc:/Icons/divider-top-right.svg"
+        height: 80
+        x: 364
+        opacity: 0.4
+    }
+
+    Image {
+        id: bottomRight
+        source: "qrc:/Icons/divider-bottom-right.svg"
+        height: 80
+        anchors.bottom: parent.bottom
+        x: topRight.x
+        opacity: 0.4
+    }
+
     Text {
         id: speedText
-        anchors.centerIn: parent
+        anchors.verticalCenter: glowOverlay.verticalCenter
+        anchors.horizontalCenter: glowOverlay.horizontalCenter
         text: speedValue
         color: "white"
         font.pointSize: 140
@@ -366,7 +413,7 @@ Window {
         text: "km/h"
         color: "white"
         anchors.top: speedText.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: speedText.horizontalCenter
         font.pointSize: 20
         font.family: textFont.name
     }
@@ -379,7 +426,7 @@ Window {
         color: gearValue == 0 ? "green" : "white"
         padding: 30
         anchors.top: glowOverlay.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenter: glowOverlay.horizontalCenter
         layer.effect: MultiEffect {
             shadowEnabled: true
             shadowBlur: 10
@@ -396,39 +443,208 @@ Window {
         }
     }
 
-    Column {
-        padding: 16
-        spacing: 40
-        anchors.right: glowOverlay.left
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
+    // Column {
+    //     padding: 16
+    //     spacing: 40
+    //     anchors.left: parent.left
+    //     anchors.right: glowOverlay.left
+    //     anchors.verticalCenter: parent.verticalCenter
+
+    //     Row {
+    //         anchors.horizontalCenter: parent.horizontalCenter
+    //         height: 40
+    //         spacing: 16
+
+    //         Text {
+    //             text: "Trip 1:"
+    //             font.pointSize: 18
+    //             font.family: textFont.name
+    //             color: "white"
+    //             anchors.verticalCenter: parent.verticalCenter
+    //             topPadding: 8
+    //         }
+
+    //         Text {
+    //             text: trip1 + " km"
+    //             font.pointSize: 24
+    //             font.family: textFont.name
+    //             color: "white"
+    //             anchors.verticalCenter: parent.verticalCenter
+    //             topPadding: 8
+    //         }
+    //     }
+
+    //     Row {
+    //         anchors.horizontalCenter: parent.horizontalCenter
+    //         height: 40
+    //         spacing: 16
+
+    //         Text {
+    //             text: "Trip 2:"
+    //             font.pointSize: 18
+    //             font.family: textFont.name
+    //             color: "white"
+    //             anchors.verticalCenter: parent.verticalCenter
+    //             topPadding: 8
+    //         }
+
+    //         Text {
+    //             text: trip2 + " km"
+    //             font.pointSize: 24
+    //             font.family: textFont.name
+    //             color: "white"
+    //             anchors.verticalCenter: parent.verticalCenter
+    //             topPadding: 8
+    //         }
+    //     }
+    // }
+
+    Text {
+        anchors.right: modeRow.left
+        text: odo + " km"
+        font.pointSize: 24
+        font.family: textFont.name
+        color: "white"
+        rightPadding: 36
+        anchors.verticalCenter: topRight.verticalCenter
+    }
+
+    Row {
+        id: modeRow
+        anchors.right: topRight.right
+        anchors.verticalCenter: topRight.verticalCenter
+        rightPadding: 36
+        height: 40
+        spacing: 16
 
         Text {
-            text: odo + " km"
+            text: "Mode:"
             font.pointSize: 24
             font.family: textFont.name
             color: "white"
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Text {
+            text: "Race"
+            font.pointSize: 24
+            font.family: highLightTextFont.name
+            color: "red"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+    MouseArea {
+        anchors.fill: mapRow
+        onClicked: stackView.push("MapHome.qml")  // Switch to screen 2
+    }
+
+    Row {
+        id: mapRow
+        anchors.right: settingsAction.left
+        anchors.top: bottomRight.top
+        anchors.bottom: bottomRight.bottom
+        spacing: 16
+        rightPadding: 36
+
+        Image {
+            id: mapIcon
+            source: "qrc:/Icons/maps.svg"
+            width: 30
+            height: 30
+            fillMode: Image.PreserveAspectFit
+            sourceSize.width: width         // Adjust source size to match the item size
+            sourceSize.height: height       // Adjust source size to match the item size
+            layer.enabled: true
+            property color iconColor: "white"
+            layer.effect: MultiEffect {
+                shadowEnabled: true
+                shadowScale: 1
+                shadowColor: mapIcon.iconColor
+                brightness: 1.0
+                colorization: 1.0
+                colorizationColor: mapIcon.iconColor
+            }
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Text {
+            text: "Maps"
+            font.pointSize: 24
+            font.family: textFont.name
+            color: mapIcon.iconColor
+            anchors.verticalCenter: parent.verticalCenter
             topPadding: 8
         }
+
+    }
+
+    Row {
+        id: settingsAction
+        anchors.right: bottomRight.right
+        anchors.top: bottomRight.top
+        anchors.bottom: bottomRight.bottom
+        spacing: 16
+        rightPadding: 36
+
+        Image {
+            id: settingsIcon
+            source: "qrc:/Icons/maps.svg"
+            width: 30
+            height: 30
+            fillMode: Image.PreserveAspectFit
+            sourceSize.width: width         // Adjust source size to match the item size
+            sourceSize.height: height       // Adjust source size to match the item size
+            layer.enabled: true
+            property color iconColor: "white"
+            layer.effect: MultiEffect {
+                shadowEnabled: true
+                shadowScale: 1
+                shadowColor: settingsIcon.iconColor
+                brightness: 1.0
+                colorization: 1.0
+                colorizationColor: settingsIcon.iconColor
+            }
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Text {
+            text: "Settings"
+            font.pointSize: 24
+            font.family: textFont.name
+            color: mapIcon.iconColor
+            anchors.verticalCenter: parent.verticalCenter
+            topPadding: 8
+        }
+    }
+
+
+    Row {
+        anchors.left: topLeft.right
+        anchors.right: topRight.left
+        anchors.top: topLeft.top
+        spacing: 44
+        topPadding: 36
+        // leftPadding: 70
+
         IconIndicator {
             iconPath: "qrc:/Icons/abs-light.svg"
             onColor: warningColor
             offColor: offColor
-            height: 40
-            width: 40
+            height: 30
+            width: 30
             isOn: absWarning
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
         }
 
         IconIndicator {
             iconPath: "qrc:/Icons/engine.svg"
             onColor: warningColor
             offColor: offColor
-            height: 40
-            width: 40
+            height: 30
+            width: 30
             isOn: engineWarning
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
         }
 
         // Row {
@@ -444,9 +660,16 @@ Window {
         //         anchors.verticalCenter: parent.verticalCenter
         //     }
 
-        IconIndicator {
-            iconPath: "qrc:/Icons/engine-temp.svg"
-            onColor: {
+        Image {
+            id: tempIcon
+            source: "qrc:/Icons/engine-temp.svg"
+            width: 30
+            height: 30
+            fillMode: Image.PreserveAspectFit
+            sourceSize.width: width         // Adjust source size to match the item size
+            sourceSize.height: height       // Adjust source size to match the item size
+            layer.enabled: true
+            property color iconColor:  {
                 if (engineTemp <= 15) {
                     return "lightblue";  // Low temperature (cold conditions)
                 } else if (engineTemp > 15 && engineTemp <= 30) {
@@ -457,104 +680,15 @@ Window {
                     return "red";        // Very high temperature (overheating)
                 }
             }
-            height: 40
-            width: 40
-            // isOn: true
-            isOn: true
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-    }
-
-    Column {
-        padding: 16
-        spacing: 40
-        anchors.left: glowOverlay.right
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: 40
-            spacing: 16
-
-            Text {
-                text: "Trip 1:"
-                font.pointSize: 18
-                font.family: textFont.name
-                color: "white"
-                anchors.verticalCenter: parent.verticalCenter
-                topPadding: 8
+            layer.effect: MultiEffect {
+                shadowEnabled: engineTemp > 35
+                shadowScale: 1
+                shadowColor: tempIcon.iconColor
+                brightness: shadowEnabled ? 1.0 : 0.4
+                colorization: 1.0
+                colorizationColor: tempIcon.iconColor
             }
-
-            Text {
-                text: trip1 + " km"
-                font.pointSize: 24
-                font.family: textFont.name
-                color: "white"
-                anchors.verticalCenter: parent.verticalCenter
-                topPadding: 8
-            }
-        }
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: 40
-            spacing: 16
-
-            Text {
-                text: "Mode:"
-                font.pointSize: 18
-                font.family: textFont.name
-                color: "white"
-                anchors.verticalCenter: parent.verticalCenter
-                topPadding: 8
-            }
-
-            Text {
-                text: "Race"
-                font.pointSize: 24
-                font.family: highLightTextFont.name
-                color: "red"
-                anchors.verticalCenter: parent.verticalCenter
-                topPadding: 8
-            }
-        }
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
-            spacing: 16
-
-            Image {
-                id: mapIcon
-                source: "qrc:/Icons/maps.svg"
-                width: parent.height
-                height: parent.height
-                fillMode: Image.PreserveAspectFit
-                sourceSize.width: width         // Adjust source size to match the item size
-                sourceSize.height: height       // Adjust source size to match the item size
-                layer.enabled: true
-                property color iconColor: "lightblue"
-                layer.effect: MultiEffect {
-                    shadowEnabled: true
-                    shadowScale: 1
-                    shadowColor: mapIcon.iconColor
-                    brightness: 1.0
-                    colorization: 1.0
-                    colorizationColor: mapIcon.iconColor
-                }
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Text {
-                text: "Maps"
-                font.pointSize: 30
-                font.family: textFont.name
-                color: mapIcon.iconColor
-                anchors.verticalCenter: parent.verticalCenter
-                topPadding: 8
-            }
-
+            anchors.verticalCenter: parent.verticalCenter
         }
     }
 }
