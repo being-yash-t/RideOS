@@ -7,8 +7,32 @@
    viewBox="0 0 48.000004 7.8541741"
    version="1.1"
    id="svg5"
+   sodipodi:docname="meter-mark.svg"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="24.362664"
+     inkscape:cx="150.59929"
+     inkscape:cy="17.383156"
+     inkscape:window-width="2320"
+     inkscape:window-height="1205"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg5" />
   <defs
      id="defs2" />
   <g
@@ -16,6 +40,7 @@
     <path
        id="rect445-3"
        style="fill:#ffffff;stroke:#ffffff;stroke-width:0.10884"
-       d="M 0.05448962,7.7997544 46.278623,4.2565676 C 48.498591,4.0864014 48.50389,3.7508585 46.27862,3.58127 L 0.05724862,0.058725 c -3.3e-4,8.2726624 0.0014,-0.248728 -0.0028,7.7410294 z" />
+       d="M 0.05448962,7.7997544 46.278623,5.314901 c 2.219968,-0.1701662 2.228554,-2.6731527 -3e-6,-2.7919644 L 0.05724862,0.058725 c -3.3e-4,8.2726624 0.0014,-0.248728 -0.0028,7.7410294 z"
+       sodipodi:nodetypes="ccsccc" />
   </g>
 </svg>

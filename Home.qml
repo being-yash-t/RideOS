@@ -8,6 +8,9 @@ Item {
     width: 1024
     height: 600
 
+    property color backgroundColor: "#141414"
+
+
     FontLoader {
         id: numbersFont
         source: "qrc:/Fonts/Alien-Encounters-Italic.ttf"  // Replace with your actual font file path
@@ -318,7 +321,7 @@ Item {
         height: meterPath.height - 120
         sourceSize.height: height       // Adjust source size to match the item size
         fillMode: Image.PreserveAspectFit
-        x: (meterPath.x + meterPath.width) - 60
+        x: (meterPath.x + meterPath.width) - 64
         anchors.verticalCenter: parent.verticalCenter
     }
 
@@ -366,8 +369,6 @@ Item {
         height: 80
         width: 180
         opacity: 0.4
-        sourceSize.width: width         // Adjust source size to match the item size
-        sourceSize.height: height       // Adjust source size to match the item size
     }
 
     Image {
@@ -415,6 +416,7 @@ Item {
         anchors.top: speedText.bottom
         anchors.horizontalCenter: speedText.horizontalCenter
         font.pointSize: 20
+        topPadding: -16
         font.family: textFont.name
     }
 
@@ -424,7 +426,7 @@ Item {
         font.pointSize: 36
         font.family: textFont.name
         color: gearValue == 0 ? "green" : "white"
-        padding: 30
+        padding: 36
         anchors.top: glowOverlay.bottom
         anchors.horizontalCenter: glowOverlay.horizontalCenter
         layer.effect: MultiEffect {
@@ -536,7 +538,7 @@ Item {
 
     MouseArea {
         anchors.fill: mapRow
-        onClicked: stackView.push("MapHome.qml")  // Switch to screen 2
+        onClicked: stackView.push("MapsHome.qml")  // Switch to screen 2
     }
 
     Row {
@@ -587,26 +589,26 @@ Item {
         spacing: 16
         rightPadding: 36
 
-        Image {
-            id: settingsIcon
-            source: "qrc:/Icons/maps.svg"
-            width: 30
-            height: 30
-            fillMode: Image.PreserveAspectFit
-            sourceSize.width: width         // Adjust source size to match the item size
-            sourceSize.height: height       // Adjust source size to match the item size
-            layer.enabled: true
-            property color iconColor: "white"
-            layer.effect: MultiEffect {
-                shadowEnabled: true
-                shadowScale: 1
-                shadowColor: settingsIcon.iconColor
-                brightness: 1.0
-                colorization: 1.0
-                colorizationColor: settingsIcon.iconColor
-            }
-            anchors.verticalCenter: parent.verticalCenter
-        }
+        // Image {
+        //     id: settingsIcon
+        //     source: "qrc:/Icons/maps.svg"
+        //     width: 30
+        //     height: 30
+        //     fillMode: Image.PreserveAspectFit
+        //     sourceSize.width: width         // Adjust source size to match the item size
+        //     sourceSize.height: height       // Adjust source size to match the item size
+        //     layer.enabled: true
+        //     property color iconColor: "white"
+        //     layer.effect: MultiEffect {
+        //         shadowEnabled: true
+        //         shadowScale: 1
+        //         shadowColor: settingsIcon.iconColor
+        //         brightness: 1.0
+        //         colorization: 1.0
+        //         colorizationColor: settingsIcon.iconColor
+        //     }
+        //     anchors.verticalCenter: parent.verticalCenter
+        // }
 
         Text {
             text: "Settings"
@@ -624,7 +626,7 @@ Item {
         anchors.right: topRight.left
         anchors.top: topLeft.top
         spacing: 44
-        topPadding: 36
+        topPadding: 30
         // leftPadding: 70
 
         IconIndicator {
@@ -663,22 +665,21 @@ Item {
         Image {
             id: tempIcon
             source: "qrc:/Icons/engine-temp.svg"
-            width: 30
-            height: 30
+            width: 28
+            height: 28
             fillMode: Image.PreserveAspectFit
             sourceSize.width: width         // Adjust source size to match the item size
             sourceSize.height: height       // Adjust source size to match the item size
             layer.enabled: true
             property color iconColor:  {
-                if (engineTemp <= 15) {
-                    return "lightblue";  // Low temperature (cold conditions)
-                } else if (engineTemp > 15 && engineTemp <= 30) {
-                    return "green";      // Average temperature (optimal conditions)
-                } else if (engineTemp > 30 && engineTemp <= 40) {
-                    return "orange";     // High temperature (hot conditions)
-                } else {
-                    return "red";        // Very high temperature (overheating)
-                }
+                // if (engineTemp <= 15) {
+                // return "lightblue";  // Low temperature (cold conditions)
+                // } else if (engineTemp > 15 && engineTemp <= 30) {
+                return "darkseagreen";      // Average temperature (optimal conditions)
+                // } else if (engineTemp > 30 && engineTemp <= 40) {
+                // return "firebrick";     // High temperature (hot conditions)
+                // } else {
+                // return "red";        // Very high temperature (overheating) }
             }
             layer.effect: MultiEffect {
                 shadowEnabled: engineTemp > 35
@@ -691,5 +692,53 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
     }
+
+    Image {
+        id: mapPreview
+        source: "https://i.redd.it/b49g8bxadrs21.png"
+        height: root.height
+        x: fuelMeter.x + fuelMeter.width
+        width: root.width - x
+        anchors.top: topRight.bottom
+        anchors.bottom: bottomRight.top
+        fillMode: Image.PreserveAspectCrop
+        z: -10
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: stackView.push("MapsHome.qml")
+        }
+    }
+
+    Rectangle {
+        anchors.left: mapPreview.left
+        anchors.right: mapPreview.right
+        anchors.top: root.top
+        anchors.bottom: root.bottom
+        z: -9
+        gradient: Gradient {
+            orientation: Gradient.Horizontal
+            GradientStop { position: 0.0; color: backgroundColor }
+            GradientStop { position: 0.2; color: "transparent" }
+            GradientStop { position: 0.8; color: "transparent" }
+            GradientStop { position: 1.0; color: backgroundColor }
+        }
+    }
+    Rectangle {
+        anchors.left: mapPreview.left
+        anchors.right: mapPreview.right
+        anchors.top: root.top
+        anchors.bottom: root.bottom
+        height: mapPreview.height
+        z: -9
+        gradient: Gradient {
+            orientation: Gradient.Vertical
+            GradientStop { position: 0.0; color: backgroundColor }
+            GradientStop { position: 0.25; color: "transparent" }
+            GradientStop { position: 0.75; color: "transparent" }
+            GradientStop { position: 1.0; color: backgroundColor }
+        }
+    }
+
 }
 

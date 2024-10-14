@@ -21,6 +21,7 @@ qt_add_qml_module(appRideOS
     Home.qml
     IconIndicator.qml
     App.qml
+    MapsHome.qml
     RESOURCES
         Icons.qrc
         SOURCES

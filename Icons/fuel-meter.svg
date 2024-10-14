@@ -26,12 +26,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.93055452"
-     inkscape:cx="-35.462726"
+     inkscape:cx="-131.64194"
      inkscape:cy="89.731443"
      inkscape:window-width="1468"
      inkscape:window-height="969"
      inkscape:window-x="193"
-     inkscape:window-y="92"
+     inkscape:window-y="64"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" /><defs
      id="defs2"><linearGradient
@@ -93,7 +93,7 @@
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.96634px;font-family:'Alien Encounters Solid';-inkscape-font-specification:'Alien Encounters Solid Italic';fill:#ffffff;stroke:none;stroke-width:1.40937"
          x="9.8365765"
          y="112.83423">Fuel</tspan></text><path
-       style="fill:url(#radialGradient3624);fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none"
+       style="display:none;fill:url(#radialGradient3624);fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none"
        id="path3593"
        sodipodi:type="arc"
        sodipodi:cx="-51.846546"
