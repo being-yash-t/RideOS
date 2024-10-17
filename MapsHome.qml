@@ -80,5 +80,4 @@ Item {
             onActivated: map.zoomLevel = Math.round(map.zoomLevel - 1)
         }
     }
-
 }

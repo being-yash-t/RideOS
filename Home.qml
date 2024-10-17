@@ -10,7 +10,6 @@ Item {
 
     property color backgroundColor: "#141414"
 
-
     FontLoader {
         id: numbersFont
         source: "qrc:/Fonts/Alien-Encounters-Italic.ttf"  // Replace with your actual font file path

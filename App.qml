@@ -14,27 +14,9 @@ Window {
         id: stackView
         anchors.fill: parent
         initialItem: "Home.qml"
+        focus: true
+        Keys.onLeftPressed: stackView.pop()
+        Keys.onRightPressed: stackView.push("MapsHome.qml")
     }
 
-    Component {
-        id:	map
-        Rectangle {
-
-            height: stackView.height
-            color: backgroundColor
-
-            Text {
-                text: "Screen 2"
-                anchors.centerIn: parent
-                font.pointSize: 20
-            }
-
-            Button {
-                text: "Go Back to Screen 1"
-                anchors.bottom: parent.bottom
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: stackView.pop()  // Go back to screen 1
-            }
-        }
-    }
 }
